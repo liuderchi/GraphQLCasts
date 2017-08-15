@@ -28,3 +28,9 @@ mutation myAdd {
     firstName
   }
 }
+
+mutation myDel {
+  deleteUser(id: "23") {
+    id
+  }
+}
