@@ -19,3 +19,12 @@ fragment userInfo on User {
   firstName
   age
 }
+
+
+mutation myAdd {
+  addUser(firstName: "derek", age: 27) {
+    # require to ask for some fields from resolve
+    id
+    firstName
+  }
+}
