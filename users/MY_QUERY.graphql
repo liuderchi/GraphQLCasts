@@ -1,0 +1,21 @@
+query myQuery {
+  foo: company(id: "2") {
+    name
+    description
+    users {
+      ...userInfo
+    }
+  }
+  company(id: "1") {
+    name
+    description
+    users {
+      ...userInfo
+    }
+  }
+}
+
+fragment userInfo on User {
+  firstName
+  age
+}
