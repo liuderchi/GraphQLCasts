@@ -91,6 +91,20 @@ const mutation = new GraphQLObjectType({
           .then(() => ({ id }))  // my design: to send id back to graphQL
       },
     },
+    editUser: {
+      type: UserType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) },
+        firstName: { type: GraphQLString },
+        age: { type: GraphQLInt },
+        companyId: { type: GraphQLString },
+      },
+      resolve(parentValue, args) {
+        // NOTE .patch() for partial updates .put() for whole fields updates
+        return axios.patch(`http://localhost:3000/users/${args.id}`, args)
+          .then(resp => resp.data)
+      },
+    },
   },
 })
 
