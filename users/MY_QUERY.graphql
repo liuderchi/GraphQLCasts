@@ -1,3 +1,11 @@
+# find user with id 40
+query findUser{
+  user(id: "40") {
+    firstName
+  }
+}
+
+# find users of company id 2 and users of company id 1
 query myQuery {
   foo: company(id: "2") {
     name
@@ -15,6 +23,7 @@ query myQuery {
   }
 }
 
+# reusable query fragment
 fragment userInfo on User {
   firstName
   age
