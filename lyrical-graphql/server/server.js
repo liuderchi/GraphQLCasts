@@ -5,10 +5,17 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const schema = require('./schema/schema');
 
+if (process.argv.length !== 3) {
+  console.log('usage:\n npm run dev <dbPassword>');
+  process.exit(-1)
+}
+
+const DBPASSWORD = process.argv[2]
+
 const app = express();
 
 // Replace with your mongoLab URI
-const MONGO_URI = '';
+const MONGO_URI = `mongodb://derek:${DBPASSWORD}@ds151963.mlab.com:51963/lyrical`;
 if (!MONGO_URI) {
   throw new Error('You must provide a MongoLab URI');
 }
