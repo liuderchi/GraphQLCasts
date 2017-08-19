@@ -1,0 +1,28 @@
+# lec 34
+
+mutation {
+  addSong(title: "how are you") {
+		id
+    # retrieve id and added title from created data
+  }
+}
+
+mutation {
+  addLyricToSong(
+    songId: "599848ffdb11930b7aa982d2",
+    content: "i'm missing you"
+  ){
+    id
+    # retrieve id and added title from the song
+  }
+}
+
+query {
+  songs {
+    id
+    title
+    lyrics {
+      content
+    }
+  }
+}
