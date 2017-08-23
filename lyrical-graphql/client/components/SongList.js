@@ -4,10 +4,16 @@ import { graphql } from 'react-apollo'
 
 class Songlist extends Component {
   render() {
-    console.log(this.props.data.loading, this.props.data.songs)
+    if (this.props.data.loading) { return (<div>Loading...</div>) }
 
     return (
-      <div>Songlist</div>
+      <div>
+        {
+          this.props.data.songs.map(song => (
+            <li>{song.title}</li>
+          ))
+        }
+      </div>
     )
   }
 }
