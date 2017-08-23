@@ -7,13 +7,15 @@ class Songlist extends Component {
     if (this.props.data.loading) { return (<div>Loading...</div>) }
 
     return (
-      <div>
+      <ul className="collection">
         {
-          this.props.data.songs.map(song => (
-            <li>{song.title}</li>
+          this.props.data.songs.map(({id, title}) => (
+            <li key={id} className="collection-item">
+              {title}
+            </li>
           ))
         }
-      </div>
+      </ul>
     )
   }
 }
@@ -21,6 +23,7 @@ class Songlist extends Component {
 const query = gql`
   {
     songs {
+      id
       title
     }
   }
